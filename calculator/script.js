@@ -38,7 +38,6 @@ class Calculator {
 			this.hasCalculated = false;
 		}
 
-		console.log(this._currentValue);
 		this._currentValue += number;
 	}
 
