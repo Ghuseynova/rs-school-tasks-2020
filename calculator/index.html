@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Calculator</title>
 		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="style.css" />
@@ -13,8 +13,8 @@
 	<body>
 		<div class="c-grid">
 			<div class="c-grid__output">
-				<div class="prev-input"></div>
-				<div class="current-input"></div>
+				<div class="prev-input">43959*</div>
+				<div class="current-input">u432875894</div>
 			</div>
 			<div class="c-grid__body">
 				<button
@@ -143,7 +143,11 @@
 				>
 					+
 				</button>
-				<button class="c-grid__btn c-grid__btn--two" data-number data-value="0">
+				<button
+					class="c-grid__btn c-grid__btn--two c-grid__btn--gray"
+					data-number
+					data-value="0"
+				>
 					0
 				</button>
 				<button class="c-grid__btn c-grid__btn--gray" data-decimal>.</button>
