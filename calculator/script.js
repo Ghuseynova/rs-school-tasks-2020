@@ -53,7 +53,15 @@ class Calculator {
 				result = prevValue * currentValue;
 				break;
 			case '+':
-				result = prevValue + currentValue;
+				if (
+					prevValue.toString().includes('.') &&
+					currentValue.toString().includes('.')
+				) {
+					result = (prevValue * 10 + currentValue * 10) / 10;
+				} else {
+					result = prevValue + currentValue;
+				}
+
 				break;
 			case '-':
 				result = prevValue - currentValue;
@@ -62,13 +70,17 @@ class Calculator {
 				result = currentValue * currentValue; // currentValue**2 --- Math.pow(currentValue, 2);
 				break;
 			case 'sqrt':
-				result = Math.sqrt(currentValue);
+				if (currentValue < 0) {
+					result = 'Invalid data entered';
+				} else {
+					result = Math.sqrt(currentValue);
+				}
+
 				break;
 			default:
 				return;
 		}
 
-		console.log(result);
 		this._currentValue = result;
 		this._prevValue = '';
 		this._operation = undefined;
@@ -84,9 +96,20 @@ class Calculator {
 		}
 	}
 
-	addDecimal() {}
+	addDecimal() {
+		if (this._currentValue.includes('.')) return;
 
-	addNegativeSign() {}
+		if (this._currentValue !== '') {
+			this._currentValue = `${this._currentValue}.`;
+		} else {
+			this._currentValue = '0.';
+		}
+	}
+
+	addNegativeSign() {
+		if (this._currentValue === '') return;
+		this._currentValue = parseFloat(this._currentValue) * -1;
+	}
 }
 
 const numberBtns = document.querySelectorAll('[data-number]');
