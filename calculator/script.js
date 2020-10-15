@@ -12,7 +12,9 @@ class Calculator {
 		this._operation = undefined;
 	}
 
-	delete() {}
+	delete() {
+		this._currentValue = this._currentValue.slice(0, -1);
+	}
 
 	appendNumber(number) {
 		this._currentValue += number;
