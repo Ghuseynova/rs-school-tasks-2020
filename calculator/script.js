@@ -23,7 +23,6 @@ class Calculator {
 	chooseOperation(operation) {
 		if (this._currentValue === '') return;
 		if (this._prevValue !== '') {
-			console.log('kkkkk');
 			this.calculate();
 		}
 
@@ -42,8 +41,6 @@ class Calculator {
 		const prevValue = parseFloat(this._prevValue);
 		const currentValue = parseFloat(this._currentValue);
 		const operation = this._operation;
-
-		console.log(operation);
 
 		switch (operation) {
 			case '/':
@@ -124,16 +121,12 @@ const currentInput = document.querySelector('.current-input');
 
 const calculator = new Calculator(currentInput, prevInput);
 
-console.log(calculator);
-
 numberBtns.forEach((numBtn) => {
 	numBtn.addEventListener('click', (e) => {
 		const number = e.target.dataset.value;
 
 		calculator.appendNumber(number);
 		calculator.updateDisplay();
-
-		console.log('number btn clicked', number);
 	});
 });
 
@@ -144,36 +137,30 @@ operationBtns.forEach((operationBtn) => {
 
 		calculator.chooseOperation(operation);
 		calculator.updateDisplay();
-		console.log('operation btn clicked', operation);
 	});
 });
 
 clearBtn.addEventListener('click', (e) => {
 	calculator.clear();
 	calculator.updateDisplay();
-	console.log('clear btn clicked');
 });
 
 delBtn.addEventListener('click', (e) => {
 	calculator.delete();
 	calculator.updateDisplay();
-	console.log('delete btn clicked');
 });
 
 decimalBtn.addEventListener('click', (e) => {
 	calculator.addDecimal();
 	calculator.updateDisplay();
-	console.log('decimal btn clicked');
 });
 
 negPosBtn.addEventListener('click', (e) => {
 	calculator.addNegativeSign();
 	calculator.updateDisplay();
-	console.log('negative positive btn clicked');
 });
 
 equalsBtn.addEventListener('click', (e) => {
 	calculator.calculate();
 	calculator.updateDisplay();
-	console.log('equals btn clicked');
 });
