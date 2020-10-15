@@ -33,6 +33,10 @@ class Calculator {
 	}
 
 	appendNumber(number) {
+		if (this.hasCalculated) {
+			this._currentValue = '';
+		}
+
 		this._currentValue += number;
 	}
 
@@ -97,6 +101,7 @@ class Calculator {
 		this._currentValue = result;
 		this._prevValue = '';
 		this._operation = undefined;
+		this.hasCalculated = true;
 	}
 
 	updateDisplay() {
