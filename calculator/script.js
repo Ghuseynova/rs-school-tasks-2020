@@ -8,31 +8,78 @@ class Calculator {
 
 	clear() {
 		this._prevValue = '';
-		this._currentValue = '0';
-		this._operation = '';
+		this._currentValue = '';
+		this._operation = undefined;
 	}
 
 	delete() {}
 
 	appendNumber(number) {
-		if (this._currentValue === '0') {
-			this._currentValue = '';
-		}
-
 		this._currentValue += number;
 	}
 
 	chooseOperation(operation) {
-		this.operation = operation;
-		this._prevValue = this._currentValue;
-		this._currentValue = '';
+		if (this._currentValue === '') return;
+		if (this._prevValue !== '') {
+			console.log('kkkkk');
+			this.calculate();
+		}
+
+		if (operation === 'sqr' || operation === 'sqrt') {
+			this._operation = operation;
+			this.calculate();
+		} else {
+			this._prevValue = this._currentValue;
+			this._currentValue = '';
+			this._operation = operation;
+		}
 	}
 
-	calculate() {}
+	calculate() {
+		let result;
+		const prevValue = parseFloat(this._prevValue);
+		const currentValue = parseFloat(this._currentValue);
+		const operation = this._operation;
+
+		console.log(operation);
+
+		switch (operation) {
+			case '/':
+				result = prevValue / currentValue;
+				break;
+			case '*':
+				result = prevValue * currentValue;
+				break;
+			case '+':
+				result = prevValue + currentValue;
+				break;
+			case '-':
+				result = prevValue - currentValue;
+				break;
+			case 'sqr':
+				result = currentValue * currentValue; // currentValue**2 --- Math.pow(currentValue, 2);
+				break;
+			case 'sqrt':
+				result = Math.sqrt(currentValue);
+				break;
+			default:
+				return;
+		}
+
+		console.log(result);
+		this._currentValue = result;
+		this._prevValue = '';
+		this._operation = undefined;
+	}
 
 	updateDisplay() {
 		this.currentInput.innerText = this._currentValue;
-		this.prevInput.innerText = this._prevValue;
+
+		if (this._operation !== undefined) {
+			this.prevInput.innerText = `${this._prevValue} ${this._operation}`;
+		} else {
+			this.prevInput.innerText = '';
+		}
 	}
 
 	addDecimal() {}
@@ -67,6 +114,7 @@ numberBtns.forEach((numBtn) => {
 
 operationBtns.forEach((operationBtn) => {
 	operationBtn.addEventListener('click', (e) => {
+		e.stopPropagation();
 		const operation = e.target.dataset.value;
 
 		calculator.chooseOperation(operation);
