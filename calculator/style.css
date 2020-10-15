@@ -22,6 +22,7 @@ body {
 	align-content: center;
 	justify-content: center;
 	min-height: 100vh;
+	grid-template-columns: 366px;
 }
 .c-grid__output {
 	display: flex;
@@ -33,6 +34,8 @@ body {
 .prev-input,
 .current-input {
 	padding: 1.5rem;
+	overflow-wrap: break-word;
+	word-break: break-all;
 }
 
 .prev-input {
