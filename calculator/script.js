@@ -35,8 +35,10 @@ class Calculator {
 	appendNumber(number) {
 		if (this.hasCalculated) {
 			this._currentValue = '';
+			this.hasCalculated = false;
 		}
 
+		console.log(this._currentValue);
 		this._currentValue += number;
 	}
 
