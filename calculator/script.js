@@ -6,6 +6,22 @@ class Calculator {
 		this.clear();
 	}
 
+	_getDisplayNumber(number) {
+		const stringNumber = number.toString();
+
+		if (stringNumber !== '') {
+			if (stringNumber.includes('.')) {
+				return `${parseFloat(stringNumber.split('.')[0]).toLocaleString(
+					'en'
+				)}.${stringNumber.split('.')[1]}`;
+			} else {
+				return parseFloat(stringNumber).toLocaleString('en');
+			}
+		} else {
+			return number;
+		}
+	}
+
 	clear() {
 		this._prevValue = '';
 		this._currentValue = '';
@@ -84,10 +100,12 @@ class Calculator {
 	}
 
 	updateDisplay() {
-		this.currentInput.innerText = this._currentValue;
+		this.currentInput.innerText = this._getDisplayNumber(this._currentValue);
 
 		if (this._operation !== undefined) {
-			this.prevInput.innerText = `${this._prevValue} ${this._operation}`;
+			this.prevInput.innerText = `${this._getDisplayNumber(this._prevValue)} ${
+				this._operation
+			}`;
 		} else {
 			this.prevInput.innerText = '';
 		}
