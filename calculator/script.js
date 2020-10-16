@@ -9,13 +9,13 @@ class Calculator {
 	_getDisplayNumber(number) {
 		const stringNumber = number.toString();
 
-		if (stringNumber !== '') {
+		if (stringNumber !== '' && !isNaN(stringNumber)) {
 			if (stringNumber.includes('.')) {
 				return `${parseFloat(stringNumber.split('.')[0]).toLocaleString(
-					'en'
+					'ru'
 				)}.${stringNumber.split('.')[1]}`;
 			} else {
-				return parseFloat(stringNumber).toLocaleString('en');
+				return parseFloat(stringNumber).toLocaleString('ru');
 			}
 		} else {
 			return number;
@@ -42,12 +42,12 @@ class Calculator {
 	}
 
 	chooseOperation(operation) {
-		if (this._currentValue === '') return;
+		if (this._currentValue === '' || isNaN(this._currentValue)) return;
 		if (this._prevValue !== '') {
 			this.calculate();
 		}
 
-		if (operation === 'sqr' || operation === 'sqrt') {
+		if (operation === 'sqrt') {
 			this._operation = operation;
 			this.calculate();
 		} else {
@@ -63,29 +63,41 @@ class Calculator {
 		const currentValue = parseFloat(this._currentValue);
 		const operation = this._operation;
 
+		const strPrevValue = prevValue.toString();
+		const strCurrentValue = currentValue.toString();
+		const dpNum1 = !!(prevValue % 1)
+				? strPrevValue.length - strPrevValue.indexOf('.') - 1
+				: 0,
+			dpNum2 = !!(currentValue % 1)
+				? strCurrentValue.length - strCurrentValue.indexOf('.') - 1
+				: 0,
+			multiplier = Math.pow(10, dpNum1 > dpNum2 ? dpNum1 : dpNum2),
+			tempNum1 = Math.round(prevValue * multiplier),
+			tempNum2 = Math.round(currentValue * multiplier);
+
 		switch (operation) {
 			case '/':
-				result = prevValue / currentValue;
-				break;
-			case '*':
-				result = prevValue * currentValue;
-				break;
-			case '+':
-				if (
-					prevValue.toString().includes('.') &&
-					currentValue.toString().includes('.')
-				) {
-					result = (prevValue * 10 + currentValue * 10) / 10;
+				if (tempNum2 === 0) {
+					result = 'Division by zero is not possible';
 				} else {
-					result = prevValue + currentValue;
+					result = tempNum1 / tempNum2;
 				}
 
 				break;
-			case '-':
-				result = prevValue - currentValue;
+			case '*':
+				result = (tempNum1 * tempNum2) / (multiplier * multiplier);
+
 				break;
-			case 'sqr':
-				result = currentValue * currentValue; // currentValue**2 --- Math.pow(currentValue, 2);
+			case '+':
+				result = (tempNum1 + tempNum2) / multiplier;
+
+				break;
+			case '-':
+				result = (tempNum1 - tempNum2) / multiplier;
+
+				break;
+			case '^':
+				result = prevValue ** currentValue; // currentValue**2 --- Math.pow(currentValue, 2);
 				break;
 			case 'sqrt':
 				if (currentValue < 0) {
@@ -118,7 +130,11 @@ class Calculator {
 	}
 
 	addDecimal() {
-		if (this._currentValue.includes('.')) return;
+		if (
+			this._currentValue.toString().includes('.') ||
+			isNaN(this._currentValue)
+		)
+			return;
 
 		if (this._currentValue !== '') {
 			this._currentValue = `${this._currentValue}.`;
@@ -155,13 +171,16 @@ numberBtns.forEach((numBtn) => {
 });
 
 operationBtns.forEach((operationBtn) => {
-	operationBtn.addEventListener('click', (e) => {
-		e.stopPropagation();
-		const operation = e.target.dataset.value;
+	operationBtn.addEventListener(
+		'click',
+		(e) => {
+			const operation = e.target.dataset.value;
 
-		calculator.chooseOperation(operation);
-		calculator.updateDisplay();
-	});
+			calculator.chooseOperation(operation);
+			calculator.updateDisplay();
+		},
+		true
+	);
 });
 
 clearBtn.addEventListener('click', (e) => {
