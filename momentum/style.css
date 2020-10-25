@@ -25,6 +25,7 @@ h2,
 p {
 	color: inherit;
 	font-weight: 400;
+	line-height: 1;
 }
 
 @supports (-webkit-text-stroke: 1px black) {
@@ -146,9 +147,16 @@ p {
 }
 
 .time {
+	margin-bottom: 0.5rem;
 	font-weight: 700;
 	font-size: 5.4rem;
-	margin-bottom: 0.5rem;
+}
+
+.time span {
+	display: inline-block;
+	margin: 0 0.5rem;
+	font-weight: inherit;
+	min-width: 6.4rem;
 }
 
 .date {
@@ -160,6 +168,10 @@ p {
 .greeting {
 	font-size: 4.8rem;
 	margin-top: 1rem;
+}
+
+.greeting span {
+	display: inline-block;
 }
 .day-time {
 }
@@ -187,6 +199,7 @@ p {
 	margin-top: 2rem;
 }
 .main-focus__title {
+	margin-bottom: 1rem;
 	font-size: 4.4rem;
 }
 .focus {
