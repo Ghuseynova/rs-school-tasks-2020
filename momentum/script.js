@@ -78,28 +78,46 @@ function getFocus() {
 }
 
 function setName(e) {
+	const innerText = e.target.innerText;
 	if (e.type === 'keypress') {
 		if (e.which === 13) {
 			localStorage.setItem('name', e.target.innerText);
 			e.target.blur();
 		}
+	} else if (e.type == 'click') {
+		if (innerText != 0) {
+			e.target.innerText = '';
+		}
 	} else {
-		localStorage.setItem('name', e.target.innerText);
+		if (!innerText.replace(/\s/g, '').length || innerText == '') {
+			e.target.innerText = localStorage.getItem('name');
+		} else {
+			localStorage.setItem('name', e.target.innerText);
+		}
 	}
 }
 
 function setFocus(e) {
+	const innerText = e.target.innerText;
 	if (e.type === 'keypress') {
 		if (e.which === 13) {
 			localStorage.setItem('focus', e.target.innerText);
 			e.target.blur();
 		}
+	} else if (e.type == 'click') {
+		if (innerText != 0) {
+			e.target.innerText = '';
+		}
 	} else {
-		localStorage.setItem('focus', e.target.innerText);
+		if (!innerText.replace(/\s/g, '').length || innerText == '') {
+			e.target.innerText = localStorage.getItem('focus');
+		} else {
+			localStorage.setItem('focus', e.target.innerText);
+		}
 	}
 }
 
-function changeGreeting() {
+function setGreeting() {
 	const date = new Date();
 
 	const hour = date.getHours();
@@ -135,7 +153,7 @@ async function getPhotos(query) {
 	}
 }
 
-function changeBg() {
+function setBg() {
 	const date = new Date();
 
 	const hour = date.getHours();
@@ -164,7 +182,6 @@ function changeBg() {
 			const bgImg = data.results[0].urls.full;
 			bgEl.style.backgroundImage = `url(${bgImg})`;
 		});
-		bgEl.style.backgroundImage = `url(${bgImg})`;
 	}
 }
 
@@ -172,12 +189,15 @@ showTime();
 showDate();
 getName();
 getFocus();
-changeGreeting();
-changeBg();
+setGreeting();
+setBg();
 // getPhotos();
+
+nameEl.addEventListener('click', setName);
 
 nameEl.addEventListener('keypress', setName);
 nameEl.addEventListener('blur', setName);
+focusEl.addEventListener('click', setFocus);
 focusEl.addEventListener('keypress', setFocus);
 focusEl.addEventListener('blur', setFocus);
 
