@@ -1,0 +1,259 @@
+html {
+	font-size: 62.5%;
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+body {
+	font-family: 'Baloo 2', cursive, sans-serif;
+	color: #fff;
+	text-align: center;
+}
+
+div,
+span,
+time,
+h1,
+h2,
+p {
+	color: inherit;
+	font-weight: 400;
+}
+
+@supports (-webkit-text-stroke: 1px black) {
+	div,
+	span,
+	time,
+	h1,
+	h2,
+	p {
+		-webkit-text-stroke: 1px black;
+		-webkit-text-fill-color: white;
+	}
+}
+.momentum {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	min-width: 100vw;
+}
+.momentum__bg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	background: url('https://www.adobe.com/content/dam/cc/us/en/products/creativecloud/stock/stock-riverflow1-720x522.png.img.png')
+		no-repeat center;
+	background-size: cover;
+}
+
+.momentum__weather {
+	position: absolute;
+	top: 5%;
+	right: 5%;
+}
+
+.momentum__inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.momentum__quote {
+	position: absolute;
+	bottom: 1rem;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.btn {
+	background: #000;
+	padding: 0.5rem;
+	border: 0;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.btn:focus {
+	outline: none;
+}
+
+.btn svg {
+	width: 2.4rem;
+	height: 2.4rem;
+	fill: #fff;
+}
+
+.btn--bg {
+	position: absolute;
+	top: 4%;
+	left: 2%;
+	z-index: 9;
+}
+
+.btn--quote {
+}
+
+.weather,
+.weather__additional {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.weather__city {
+	padding-bottom: 0.8rem;
+	font-size: 3.2rem;
+	font-weight: 600;
+}
+
+.weather__city:focus {
+	outline: none;
+	background: /* gradient can be an image */ linear-gradient(
+			to right,
+			#fff 0%,
+			#000 100%
+		)
+		left bottom no-repeat;
+	background-size: 100% 0.3rem;
+}
+
+.weather__icon {
+}
+
+.weather__desc,
+.weather__temp,
+.weather__hum {
+	font-size: 2.4rem;
+}
+.weather__temp {
+}
+.weather__hum {
+}
+
+.time {
+	font-weight: 700;
+	font-size: 5.4rem;
+	margin-bottom: 0.5rem;
+}
+
+.date {
+	font-weight: 600;
+	font-size: 3.6rem;
+	margin-bottom: 0.5rem;
+}
+
+.greeting {
+	font-size: 4.8rem;
+	margin-top: 1rem;
+}
+.day-time {
+}
+
+.name {
+	font-weight: 700;
+}
+
+.name:focus,
+.focus:focus {
+	outline: none;
+	background: /* gradient can be an image */ linear-gradient(
+			to right,
+			#fff 0%,
+			#000 100%
+		)
+		left bottom no-repeat;
+	background-size: 100% 0.3rem;
+}
+
+.main-focus {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 2rem;
+}
+.main-focus__title {
+	font-size: 4.4rem;
+}
+.focus {
+	font-weight: 700;
+	font-size: 5.4rem;
+}
+
+.quote {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.quote__desc {
+	margin-bottom: 0.8rem;
+	font-size: 5rem;
+}
+
+@media only screen and (max-width: 700px) {
+	.weather__additional {
+		flex-direction: row;
+	}
+
+	.weather__city {
+		font-size: 1.8rem;
+	}
+
+	.weather__desc,
+	.weather__temp,
+	.weather__hum {
+		margin: 0 0.6rem;
+		font-size: 1.4rem;
+	}
+
+	.time {
+		font-size: 2.4rem;
+	}
+
+	.date {
+		font-size: 2.1rem;
+	}
+
+	.greeting {
+		font-size: 2.2rem;
+	}
+
+	.name,
+	.day-time {
+		margin-top: 1rem;
+		font-size: 2.2rem;
+	}
+
+	.main-focus__title {
+		font-size: 1.8rem;
+	}
+
+	.focus {
+		font-size: 2.4rem;
+	}
+
+	.quote__desc {
+		font-size: 2rem;
+	}
+
+	.btn svg {
+		width: 1.8rem;
+		height: 1.8rem;
+		fill: #fff;
+	}
+}

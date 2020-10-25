@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Momentum</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="momentum">
+			<div class="momentum__bg"></div>
+			<button class="btn btn--bg js-bg" title="Change Background">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					version="1.1"
+					viewBox="0 0 32 32"
+				>
+					<!-- <title>refresh</title> -->
+					<path
+						d="M26.631 4h4.869c0.276 0 0.5-0.224 0.5-0.5s-0.224-0.5-0.5-0.5h-6c-0.276 0-0.5 0.224-0.5 0.5v6c0 0.276 0.224 0.5 0.5 0.5s0.5-0.224 0.5-0.5v-4.717l0.611 0.611c2.833 2.833 4.394 6.6 4.394 10.606s-1.561 7.773-4.394 10.606c-4.205 4.206-10.504 5.532-16.051 3.375-0.257-0.102-0.547 0.027-0.647 0.284-0.1 0.258 0.027 0.548 0.285 0.647 1.884 0.732 3.848 1.088 5.797 1.088 4.17 0 8.266-1.63 11.323-4.688 3.022-3.021 4.687-7.040 4.687-11.313s-1.665-8.291-4.687-11.312l-0.687-0.687zM6.5 22c-0.276 0-0.5 0.224-0.5 0.5v4.84l-0.713-0.713c-2.833-2.833-4.394-6.6-4.394-10.606s1.561-7.774 4.394-10.607c4.135-4.136 10.351-5.495 15.836-3.456 0.256 0.096 0.546-0.035 0.643-0.295 0.096-0.259-0.036-0.547-0.295-0.643-5.849-2.172-12.48-0.725-16.891 3.687-3.022 3.021-4.687 7.040-4.687 11.313s1.665 8.292 4.687 11.313l0.666 0.667h-4.746c-0.276 0-0.5 0.224-0.5 0.5s0.224 0.5 0.5 0.5h5.856c0.040 0.010 0.376-0.025 0.474-0.123 0.004-0.004 0.005-0.009 0.009-0.013 0.098-0.092 0.161-0.219 0.161-0.364v-6c0-0.276-0.224-0.5-0.5-0.5z"
+					/>
+				</svg>
+			</button>
+
+			<div class="weather momentum__weather">
+				<span
+					class="weather__city js-city"
+					contenteditable="true"
+					title="Enter a new city"
+					>Saint-petersburg</span
+				>
+
+				<div class="weather__additional">
+					<span class="weather__icon"
+						><img
+							class="uW5pk"
+							alt="Showers"
+							src="//ssl.gstatic.com/onebox/weather/48/rain_light.png"
+							data-atf="1"
+					/></span>
+					<span class="weather__desc">cloudy</span>
+					<span class="weather__temp">5C</span>
+					<span class="weather__hum">15%</span>
+				</div>
+			</div>
+
+			<div class="momentum__inner">
+				<time class="time js-time">12:34:12</time>
+				<span class="date js-date">Saturday, October 25</span>
+				<div class="greeting">
+					<span class="day-time js-day-time">Good Morning</span>
+					<span
+						class="name js-name"
+						contenteditable="true"
+						title="Enter a new name"
+						>Igid esger</span
+					>
+				</div>
+				<div class="main-focus">
+					<span class="main-focus__title">What is your main focus of day?</span>
+					<span
+						class="focus js-focus"
+						contenteditable="true"
+						title="Change your daily focus"
+						>Qarabag is Azerbaijan!</span
+					>
+				</div>
+			</div>
+
+			<div class="quote momentum__quote">
+				<div class="quote__desc js-quote">
+					Never give up... you will find him
+				</div>
+				<button class="btn btn--quote js-other-quote" title="Get other quote">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						version="1.1"
+						width="32"
+						height="32"
+						viewBox="0 0 32 32"
+					>
+						<!-- <title>refresh</title> -->
+						<path
+							d="M26.631 4h4.869c0.276 0 0.5-0.224 0.5-0.5s-0.224-0.5-0.5-0.5h-6c-0.276 0-0.5 0.224-0.5 0.5v6c0 0.276 0.224 0.5 0.5 0.5s0.5-0.224 0.5-0.5v-4.717l0.611 0.611c2.833 2.833 4.394 6.6 4.394 10.606s-1.561 7.773-4.394 10.606c-4.205 4.206-10.504 5.532-16.051 3.375-0.257-0.102-0.547 0.027-0.647 0.284-0.1 0.258 0.027 0.548 0.285 0.647 1.884 0.732 3.848 1.088 5.797 1.088 4.17 0 8.266-1.63 11.323-4.688 3.022-3.021 4.687-7.040 4.687-11.313s-1.665-8.291-4.687-11.312l-0.687-0.687zM6.5 22c-0.276 0-0.5 0.224-0.5 0.5v4.84l-0.713-0.713c-2.833-2.833-4.394-6.6-4.394-10.606s1.561-7.774 4.394-10.607c4.135-4.136 10.351-5.495 15.836-3.456 0.256 0.096 0.546-0.035 0.643-0.295 0.096-0.259-0.036-0.547-0.295-0.643-5.849-2.172-12.48-0.725-16.891 3.687-3.022 3.021-4.687 7.040-4.687 11.313s1.665 8.292 4.687 11.313l0.666 0.667h-4.746c-0.276 0-0.5 0.224-0.5 0.5s0.224 0.5 0.5 0.5h5.856c0.040 0.010 0.376-0.025 0.474-0.123 0.004-0.004 0.005-0.009 0.009-0.013 0.098-0.092 0.161-0.219 0.161-0.364v-6c0-0.276-0.224-0.5-0.5-0.5z"
+						/>
+					</svg>
+				</button>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
