@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+	src: local('Material Icons'), local('MaterialIcons-Regular'),
+		url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+		url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+		url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 2.4rem; /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+html {
+	font-size: 0.8vw;
+	box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5% 5% 0 5%;
+	height: 100vh;
+	background-color: rgba(17, 10, 10, 0.85);
+	font-family: 'Roboto', sans-serif;
+	color: rgba(199, 11, 11, 0.666);
+	overflow: hidden;
+}
+
+.textarea {
+	width: 80%;
+	min-height: 45vh;
+	margin-bottom: 3%;
+	padding: 2%;
+	border-radius: 0.5rem;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.textarea:focus {
+	outline: none;
+}
+
+.textarea:focus + .keyboard {
+	transform: translate3d(0, 0, 0);
+}
+
+.keyboard {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0.5%;
+	transition: transform 0.5s linear;
+}
+
+.keyboard--hidden {
+	transform: translate3d(0, 100%, 0);
+}
+
+.keyboard__row {
+	flex: 0 0 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.keyboard__key {
+	position: relative;
+	flex: 0 1 10%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1% 1%;
+	margin: 0.3%;
+	border-radius: 0.5rem;
+	border: 1px solid transparent;
+	background-color: transparent;
+	box-shadow: 2px 2px 5px 0px rgba(199, 11, 11, 0.666);
+	font-size: 2.4rem;
+	text-transform: lowercase;
+	cursor: pointer;
+	transition: box-shadow 0.4s;
+}
+
+.keyboard__key:active {
+	box-shadow: 0 0 0 0 transparent;
+}
+
+.keyboard__key:focus {
+	outline: none;
+}
+
+.keyboard__key--space {
+	flex: 0 1 30%;
+}
+
+.keyboard__key-symbol--small {
+	position: absolute;
+	right: 8%;
+	bottom: 8%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.4rem;
+}
+
+@media only screen and (max-width: 800px) {
+	html {
+		font-size: 1.2vw;
+	}
+
+	body {
+		padding: 3% 3% 0 3%;
+	}
+
+	.textarea {
+		min-height: 60vh;
+		width: 90%;
+	}
+}
