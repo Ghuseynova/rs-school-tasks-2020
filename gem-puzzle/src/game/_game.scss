@@ -1,0 +1,14 @@
+.game-field {
+  position: relative;
+}
+
+.game-tile {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  color: #fff;
+  background-repeat: no-repeat;
+  border: 2px solid rgba(255, 255, 255, 1);
+}

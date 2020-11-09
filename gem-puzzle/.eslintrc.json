@@ -1,0 +1,30 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "commonjs": true
+  },
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": [],
+
+  "rules": {
+    "quotes": ["error", "single"],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ]
+  },
+  "ignorePatterns": ["node_modules/", "build/**/*.js",  "webpack.common.js", "webpack.dev.js", "webpack.prod.js"],
+  "settings": {
+  }
+}
