@@ -22,7 +22,8 @@ class GField {
   }
 
   _setTiles() {
-    for (let i = 1; i <= this.size ** 2; i++) {
+    for (let i = 0; i <= this.size ** 2 - 1; i++) {
+      console.log(i);
       this.tiles.push(new GTile(i, this));
     }
 
@@ -30,30 +31,20 @@ class GField {
   }
 
   _shuffle() {
-    for (let i = this.tiles.length - 1; i > 0; i--) {
+    for (let i = this.tiles.length - 1; i >= 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
+      console.log('i: ' + i, 'j: ' + j);
+
+      this.tiles[i].tile.style.left = this.tiles[i].setPosition(j).left;
+      this.tiles[i].tile.style.top = this.tiles[i].setPosition(j).top;
+
+      this.tiles[j].tile.style.left = this.tiles[j].setPosition(i).left;
+      this.tiles[j].tile.style.top = this.tiles[j].setPosition(i).top;
 
       [this.tiles[i], this.tiles[j]] = [this.tiles[j], this.tiles[i]];
-      this.tiles[i].tile.style.left = `${
-        this.tiles[i].setPositionCoord(this.tiles[j].index).y *
-        this.tiles[i].width
-      }px`;
-
-      this.tiles[i].tile.style.top = `${
-        this.tiles[i].setPositionCoord(this.tiles[j].index).x *
-        this.tiles[i].width
-      }px`;
-
-      this.tiles[j].tile.style.left = `${
-        this.tiles[j].setPositionCoord(this.tiles[i].index).y *
-        this.tiles[j].width
-      }px`;
-
-      this.tiles[j].tile.style.top = `${
-        this.tiles[j].setPositionCoord(this.tiles[i].index).x *
-        this.tiles[j].width
-      }px`;
     }
+
+    console.log(this.tiles);
   }
 
   render() {
