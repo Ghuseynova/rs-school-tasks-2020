@@ -19,6 +19,6 @@ const parentEl = document.querySelector('.game-board');
 let width = window.matchMedia('(max-width: 600px)').matches ? 300 : 400;
 
 console.log(width);
-const size = 3;
+const size = 5;
 
 new GField(parentEl, width, size, imageSrc);
