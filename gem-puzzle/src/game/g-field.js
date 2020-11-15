@@ -25,11 +25,9 @@ class GField {
     for (let i = 0; i <= this.size ** 2 - 1; i++) {
       this.tiles.push(new GTile(i, this));
     }
-
-    this._shuffle();
   }
 
-  _shuffle() {
+  shuffle() {
     for (let i = this.tiles.length - 1; i >= 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
 

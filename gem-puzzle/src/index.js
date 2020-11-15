@@ -17,8 +17,23 @@ console.log(images);
 const imageSrc = images[Math.floor(Math.random() * images.length) + 1].default;
 const parentEl = document.querySelector('.game-board');
 let width = window.matchMedia('(max-width: 600px)').matches ? 300 : 400;
-
-console.log(width);
 const size = 5;
+let newGame = new GField(parentEl, width, size, imageSrc);
 
-new GField(parentEl, width, size, imageSrc);
+const btns = document.querySelectorAll('.btn');
+console.log(btns);
+
+btns.forEach((btn) => {
+  btn.addEventListener('click', function () {
+    console.log(this.classList);
+    if (this.classList.contains('btn--play')) {
+      console.log('play');
+      newGame.shuffle();
+      parentEl.classList.remove('game-board--disabled');
+    } else if (this.classList.contains('btn--pause')) {
+      console.log('pause');
+    } else {
+      console.log('resume');
+    }
+  });
+});
