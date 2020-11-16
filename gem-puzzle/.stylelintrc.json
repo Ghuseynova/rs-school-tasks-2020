@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-prettier/recommended",
+    "stylelint-config-rational-order"
+  ],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "rule-empty-line-before": [
+      "always",
+      {
+        "ignore": ["after-comment", "first-nested"]
+      }
+    ],
+    "number-leading-zero": "always",
+    "plugin/rational-order": [
+      true,
+      {
+        "empty-line-between-groups": false
+      }
+    ],
+    "no-empty-source": null
+  }
+}
