@@ -12,28 +12,52 @@ const images = importAll(
   require.context('./assets/images/', false, /\.(png|jpe?g|svg)$/)
 );
 
-console.log(images);
-
 const imageSrc = images[Math.floor(Math.random() * images.length) + 1].default;
 const parentEl = document.querySelector('.game-board');
+const gameOverlay = document.querySelector('.game-overlay');
 let width = window.matchMedia('(max-width: 600px)').matches ? 300 : 400;
 const size = 5;
 let newGame = new GField(parentEl, width, size, imageSrc);
 
 const btns = document.querySelectorAll('.btn');
-console.log(btns);
+const navBtns = document.querySelectorAll('.nav-btn');
 
 btns.forEach((btn) => {
   btn.addEventListener('click', function () {
-    console.log(this.classList);
     if (this.classList.contains('btn--play')) {
-      console.log('play');
-      newGame.shuffle();
+      this.classList.remove('btn--active');
+      document.querySelector('.btn--pause').classList.add('btn--active');
       parentEl.classList.remove('game-board--disabled');
+      newGame.shuffle();
     } else if (this.classList.contains('btn--pause')) {
-      console.log('pause');
+      this.classList.remove('btn--active');
+      document.querySelector('.btn--resume').classList.add('btn--active');
+      gameOverlay.classList.add('game-overlay--visible');
     } else {
-      console.log('resume');
+      this.classList.remove('btn--active');
+      document.querySelector('.btn--pause').classList.add('btn--active');
+      gameOverlay.classList.remove('game-overlay--visible');
+    }
+  });
+});
+
+navBtns.forEach((navBtn) => {
+  navBtn.addEventListener('click', function () {
+    const screen = this.dataset.screen;
+
+    switch (screen) {
+      case '':
+        document.querySelector('.btn--resume').classList.remove('btn--active');
+        document.querySelector('.btn--pause').classList.add('btn--active');
+        gameOverlay.classList.remove('game-overlay--visible');
+        newGame.shuffle();
+        break;
+      case 'best_scores':
+        break;
+      case 'settings':
+        break;
+      default:
+        return;
     }
   });
 });

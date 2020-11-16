@@ -5,10 +5,9 @@ class GField {
     this.parentEl = parentEl;
     this.size = size;
     this.width = width;
-    console.log(this.width);
     this.tiles = [];
     this.image = imageSrc;
-
+    this.moves = 0;
     this.render();
   }
 

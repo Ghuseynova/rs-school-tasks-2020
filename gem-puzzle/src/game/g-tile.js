@@ -53,13 +53,9 @@ class GTile {
   }
 
   onClick(e) {
-    console.log('i worked', e);
-    console.log(this.index);
     const { tiles, size } = this.parentEl;
-    console.log(tiles);
     const clickedElIndex = tiles.findIndex((tile) => tile.index === this.index);
     const emtyElIndex = tiles.findIndex((tile) => tile.isEmpty);
-    console.log(clickedElIndex, emtyElIndex);
 
     if (
       clickedElIndex - 1 === emtyElIndex ||
@@ -68,14 +64,14 @@ class GTile {
       clickedElIndex + size === emtyElIndex
     ) {
       this.parentEl.swap(clickedElIndex, emtyElIndex);
+      this.parentEl.moves += 1;
+      document.querySelector('.js-moves>span').innerText = this.parentEl.moves;
     } else {
       return;
     }
   }
 
   handleEvent(e) {
-    console.log(e);
-
     switch (e.type) {
       case 'click':
         this.onClick(e);
