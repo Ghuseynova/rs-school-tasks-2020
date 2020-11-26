@@ -3,7 +3,7 @@ class GTile {
     this.index = i;
     this.parentEl = parentEl;
     this.width = parentEl.width / parentEl.size;
-    this.isEmpty = i !== parentEl.size ** 2 - 1 ? false : true;
+    this.isEmpty = i === parentEl.size ** 2 - 1;
 
     this.render();
   }
@@ -52,7 +52,7 @@ class GTile {
     this.tile.addEventListener('click', this);
   }
 
-  onClick(e) {
+  onClick() {
     const { tiles, size } = this.parentEl;
     const clickedElIndex = tiles.findIndex((tile) => tile.index === this.index);
     const emtyElIndex = tiles.findIndex((tile) => tile.isEmpty);
@@ -66,9 +66,9 @@ class GTile {
       this.parentEl.swap(clickedElIndex, emtyElIndex);
       this.parentEl.moves += 1;
       document.querySelector('.js-moves>span').innerText = this.parentEl.moves;
-    } else {
-      return;
     }
+
+    return false;
   }
 
   handleEvent(e) {
@@ -76,6 +76,7 @@ class GTile {
       case 'click':
         this.onClick(e);
         break;
+      default:
     }
   }
 
