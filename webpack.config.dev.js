@@ -1,4 +1,3 @@
-
 require('@babel/polyfill');
 const webpack = require('webpack');
 
@@ -71,7 +70,7 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: `[path][name].[ext]`,
+            options: '[path][name].[ext]',
           },
           'img-loader',
         ],

@@ -28,7 +28,7 @@ class GField {
 
   shuffle() {
     for (let i = this.tiles.length - 1; i >= 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
+      const j = Math.floor(Math.random() * (i + 1));
 
       this.swap(i, j);
     }
