@@ -4,7 +4,10 @@
     "es2020": true,
     "commonjs": true
   },
-  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "extends": [
+    "airbnb-base",
+    "plugin:prettier/recommended"
+  ],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
@@ -14,17 +17,33 @@
     "sourceType": "module"
   },
   "plugins": [],
-
   "rules": {
-    "quotes": ["error", "single"],
+    "quotes": [
+      "error",
+      "single"
+    ],
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js", ".jsx"]
+        "extensions": [
+          ".js"
+        ]
+      }
+    ],
+    "no-underscore-dangle": "off",
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
       }
     ]
   },
-  "ignorePatterns": ["node_modules/", "build/**/*.js",  "webpack.common.js", "webpack.dev.js", "webpack.prod.js"],
-  "settings": {
-  }
+  "ignorePatterns": [
+    "node_modules/",
+    "build/**/*.js",
+    "webpack.common.js",
+    "webpack.dev.js",
+    "webpack.prod.js"
+  ],
+  "settings": {}
 }

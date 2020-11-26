@@ -1,13 +1,9 @@
-// import  '@babel/polyfill';
-
-const path = require('path');
 
 require('@babel/polyfill');
 const webpack = require('webpack');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const autoprefixer = require('autoprefixer');
 
@@ -83,7 +79,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js'],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -106,11 +102,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: './index.html',
       template: './src/index.html',
-    }),
-    new StylelintPlugin({
-      configFile: '.stylelintrc',
-      files: './src/**/*.s?(a|c)ss',
-      fix: true,
     }),
   ],
 };
