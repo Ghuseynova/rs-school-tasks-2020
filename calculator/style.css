@@ -1,0 +1,106 @@
+html {
+	font-size: 62.5%;
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-weight: normal;
+	background-color: #b2b2b2;
+}
+
+.c-grid {
+	display: grid;
+	align-content: center;
+	justify-content: center;
+	min-height: 100vh;
+	grid-template-columns: 366px;
+}
+.c-grid__output {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: flex-end;
+	min-height: 114px;
+	background-color: #0c0c0c;
+}
+.prev-input,
+.current-input {
+	padding: 1.5rem;
+	overflow-wrap: break-word;
+	word-break: break-all;
+}
+
+.prev-input {
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 1.8rem;
+}
+
+.current-input {
+	color: #fefefe;
+	font-size: 2.7em;
+	font-weight: 700;
+}
+.c-grid__body {
+	display: grid;
+	grid-template-columns: repeat(4, 9rem);
+	grid-gap: 0.2rem;
+	background-color: #0c0c0c;
+}
+.c-grid__btn {
+	border: 0;
+	padding: 2rem;
+	color: #929292;
+	font-family: inherit;
+	font-size: 1.8rem;
+	font-weight: bold;
+	outline: none;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background-color 0.4s;
+}
+
+.c-grid__btn sup {
+	text-transform: lowercase;
+	pointer-events: none;
+}
+
+.c-grid__btn--two:hover {
+	background-color: ;
+}
+
+.c-grid__btn--two {
+	grid-column: span 2;
+}
+.c-grid__btn--dark {
+	background-color: #191919;
+}
+
+.c-grid__btn--dark:hover {
+	background-color: rgba(25, 25, 25, 0.7);
+}
+
+.c-grid__btn--gray {
+	background-color: #2d2d2d;
+}
+
+.c-grid__btn--gray:hover {
+	background-color: rgba(45, 45, 45, 0.9);
+}
+
+.c-grid__btn--orange {
+	background-color: #c73d00;
+	color: #2d2d2d;
+}
+
+.c-grid__btn--orange:hover {
+	background-color: rgba(199, 61, 0, 0.9);
+}
